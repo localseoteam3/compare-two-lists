@@ -1,28 +1,38 @@
-# Compare Two Lists
+# Compare Two Lists Lite
 
-A lightweight companion page about comparing two lists, built for GitHub Pages.
+A small standalone browser-based tool for comparing two lists and finding common values plus values unique to either side.
 
 ## Live page
 
 https://localseoteam3.github.io/compare-two-lists/
 
-## Full Compare Two Lists tool
+## What this project does
 
-Use the complete online tool here:
+The GitHub Pages version provides a real lightweight comparison experience rather than duplicating the main website. Visitors can:
 
-**[Compare Two Lists on ComparingTwoLists.com](https://comparingtwolists.com/)**
+- Paste two lists
+- Find common values
+- Find values only in List A
+- Find values only in List B
+- Ignore letter case
+- Trim surrounding spaces
+- Ignore blank entries
+- Copy comparison results
 
-The main website provides the actual comparison workflow and additional list/data utilities.
+The comparison runs locally in the browser with JavaScript.
 
-## Purpose of this repository
+## Full comparison suite
 
-This repository keeps a concise, useful explanation of list comparison with a worked example and a direct path to the full tool. It is intentionally not a duplicate of the main website.
+For additional list and data utilities, use the main website:
 
-## Files
+**[ComparingTwoLists.com](https://comparingtwolists.com/)**
 
-- `index.html` — landing page and SEO metadata
+## Project files
+
+- `index.html` — page markup, content and SEO metadata
 - `style.css` — responsive styling
+- `app.js` — browser-based list comparison logic
 - `robots.txt` — crawler access and sitemap location
 - `sitemap.xml` — canonical GitHub Pages URL
 - `404.html` — noindex error page
-- `.nojekyll` — serve static files directly on GitHub Pages
+- `.nojekyll` — serve the static site directly on GitHub Pages
