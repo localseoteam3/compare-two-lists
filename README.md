@@ -1,44 +1,28 @@
 # Compare Two Lists
 
-A lightweight, browser-based tool for comparing two lists and finding matches, one-sided differences and the combined union.
+A lightweight companion page about comparing two lists, built for GitHub Pages.
 
-## Live demo
+## Live page
 
-**GitHub Pages:** https://localseoteam3.github.io/compare-two-lists/
+https://localseoteam3.github.io/compare-two-lists/
 
-## Full comparison suite
+## Full Compare Two Lists tool
 
-For additional list comparison, cleaning and data utilities, visit **[ComparingTwoLists.com](https://comparingtwolists.com/)**.
+Use the complete online tool here:
 
-## Features
+**[Compare Two Lists on ComparingTwoLists.com](https://comparingtwolists.com/)**
 
-- Find values common to both lists
-- Find values only in List A
-- Find values only in List B
-- Build a combined unique list
-- Case-sensitive or case-insensitive matching
-- Optional whitespace trimming
-- Ignore blank values
-- Accept new-line, comma and semicolon separators
-- Copy results with one click
-- Runs locally in the browser; no comparison API required
+The main website provides the actual comparison workflow and additional list/data utilities.
 
-## Usage
+## Purpose of this repository
 
-1. Paste values into List A and List B.
-2. Choose the comparison options you need.
-3. Select **Compare lists**.
-4. Copy the result set you want.
+This repository keeps a concise, useful explanation of list comparison with a worked example and a direct path to the full tool. It is intentionally not a duplicate of the main website.
 
-## Project structure
+## Files
 
-- `index.html` — semantic page markup and SEO metadata
-- `style.css` — responsive layout and styling
-- `app.js` — client-side comparison logic
-- `robots.txt` — crawler access and sitemap discovery
+- `index.html` — landing page and SEO metadata
+- `style.css` — responsive styling
+- `robots.txt` — crawler access and sitemap location
 - `sitemap.xml` — canonical GitHub Pages URL
-- `404.html` — a simple noindex error page
-
-## Privacy
-
-List values are processed in the visitor's browser by JavaScript. The project does not include a backend comparison service.
+- `404.html` — noindex error page
+- `.nojekyll` — serve static files directly on GitHub Pages
