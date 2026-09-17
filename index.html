@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Compare Two Lists Online | Matches, Differences & List Diff</title>
-  <meta name="description" content="Learn the quickest way to compare two lists, understand matches and differences, then open the full Compare Two Lists tool for instant online comparison.">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Compare Two Lists Online – Free List Comparison Tool</title>
+  <meta name="description" content="Compare two lists online to find common values and items unique to each list. A simple, private browser-based list comparison tool with no sign-up.">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="canonical" href="https://localseoteam3.github.io/compare-two-lists/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Compare Two Lists Online">
-  <meta property="og:description" content="A concise guide to list comparison with a direct link to the full Compare Two Lists tool.">
+  <meta property="og:title" content="Compare Two Lists Online – Free List Comparison Tool">
+  <meta property="og:description" content="Find matches and differences between two lists directly in your browser.">
   <meta property="og:url" content="https://localseoteam3.github.io/compare-two-lists/">
   <meta name="twitter:card" content="summary">
   <meta name="theme-color" content="#0d6efd">
@@ -17,11 +17,14 @@
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
-    "@type":"WebPage",
-    "name":"Compare Two Lists Online",
+    "@type":"WebApplication",
+    "name":"Compare Two Lists Lite",
     "url":"https://localseoteam3.github.io/compare-two-lists/",
-    "description":"A concise guide to comparing two lists and understanding matches, unique values and list differences.",
-    "about":{"@type":"Thing","name":"List comparison"}
+    "applicationCategory":"UtilitiesApplication",
+    "operatingSystem":"Any",
+    "isAccessibleForFree":true,
+    "description":"A lightweight browser-based tool for comparing two lists and finding common and unique values.",
+    "featureList":["Find common values","Find values only in List A","Find values only in List B","Case-insensitive matching option","Ignore blank values"]
   }
   </script>
 </head>
@@ -29,81 +32,110 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="./">Compare Two Lists</a>
-      <a class="header-link" href="https://comparingtwolists.com/">Open Full Tool</a>
+      <a class="header-link" href="https://comparingtwolists.com/">Advanced tools</a>
     </div>
   </header>
 
   <main>
     <section class="hero container">
-      <span class="eyebrow">Quick list comparison guide</span>
+      <span class="eyebrow">Free browser-based utility</span>
       <h1>Compare Two Lists Online</h1>
-      <p class="lead">Need to find which values match, which appear only in one list, or what changed between two sets of data? Use the full browser-based comparison tool on ComparingTwoLists.com.</p>
-      <a class="primary-cta" href="https://comparingtwolists.com/">Compare Two Lists Now <span aria-hidden="true">→</span></a>
-      <p class="microcopy">Opens the complete list comparison tool.</p>
+      <p class="lead">Paste two lists and instantly find the values they share and the values that appear on only one side. The comparison runs locally in your browser.</p>
     </section>
 
-    <section class="card container" aria-labelledby="example-title">
-      <div class="section-heading">
-        <span class="eyebrow">Simple example</span>
-        <h2 id="example-title">What does comparing two lists mean?</h2>
+    <section class="tool-card container" aria-labelledby="tool-title">
+      <div class="tool-heading">
+        <div>
+          <h2 id="tool-title">List comparison tool</h2>
+          <p>Enter one value per line. Comma-separated values also work.</p>
+        </div>
+        <button id="exampleBtn" class="secondary-btn" type="button">Load example</button>
       </div>
-      <div class="example-grid">
-        <div class="example-box">
-          <strong>List A</strong>
-          <span>Apple</span><span>Banana</span><span>Orange</span>
+
+      <div class="input-grid">
+        <div class="input-panel">
+          <div class="label-row"><label for="listA">List A</label><span id="countA">0 items</span></div>
+          <textarea id="listA" spellcheck="false" placeholder="apple&#10;banana&#10;orange"></textarea>
         </div>
-        <div class="example-box">
-          <strong>List B</strong>
-          <span>Banana</span><span>Orange</span><span>Grape</span>
-        </div>
-        <div class="example-box result-box">
-          <strong>Result</strong>
-          <span><b>Matches:</b> Banana, Orange</span>
-          <span><b>Only A:</b> Apple</span>
-          <span><b>Only B:</b> Grape</span>
+        <div class="input-panel">
+          <div class="label-row"><label for="listB">List B</label><span id="countB">0 items</span></div>
+          <textarea id="listB" spellcheck="false" placeholder="banana&#10;orange&#10;grape"></textarea>
         </div>
       </div>
-      <p>Comparing two lists means checking two sets of values and separating the overlap from the differences. The same task is often searched as <strong>compare 2 lists</strong>, <strong>comparing two lists</strong>, <strong>comparing 2 lists</strong>, or <strong>list diff</strong>. The useful output is usually the same: common values, values unique to the first list, and values unique to the second list.</p>
+
+      <div class="options" aria-label="Comparison options">
+        <label><input id="ignoreCase" type="checkbox" checked> Ignore letter case</label>
+        <label><input id="trimSpaces" type="checkbox" checked> Trim spaces</label>
+        <label><input id="ignoreBlank" type="checkbox" checked> Ignore blank values</label>
+      </div>
+
+      <div class="actions">
+        <button id="compareBtn" class="primary-btn" type="button">Compare lists</button>
+        <button id="swapBtn" class="secondary-btn" type="button">Swap lists</button>
+        <button id="clearBtn" class="secondary-btn" type="button">Clear</button>
+        <span class="privacy-note">Your list data stays in this browser.</span>
+      </div>
+
+      <div class="summary" aria-live="polite">
+        <div><strong id="commonCount">0</strong><span>Common</span></div>
+        <div><strong id="onlyACount">0</strong><span>Only in A</span></div>
+        <div><strong id="onlyBCount">0</strong><span>Only in B</span></div>
+      </div>
+
+      <div class="results-grid">
+        <article class="result-card">
+          <div class="result-head"><h3>Common values</h3><button class="copy-btn" data-target="commonResult" type="button">Copy</button></div>
+          <pre id="commonResult">Run a comparison to see results.</pre>
+        </article>
+        <article class="result-card">
+          <div class="result-head"><h3>Only in List A</h3><button class="copy-btn" data-target="onlyAResult" type="button">Copy</button></div>
+          <pre id="onlyAResult">—</pre>
+        </article>
+        <article class="result-card">
+          <div class="result-head"><h3>Only in List B</h3><button class="copy-btn" data-target="onlyBResult" type="button">Copy</button></div>
+          <pre id="onlyBResult">—</pre>
+        </article>
+      </div>
     </section>
 
     <section class="content-grid container">
       <article>
-        <h2>When is list comparison useful?</h2>
-        <p>List comparison is useful for checking customer IDs, email lists, keywords, inventory SKUs, product codes, names, URLs, spreadsheet columns, database exports and many other line-based datasets. Instead of manually scanning two columns, a comparison tool can immediately surface what is shared and what is missing.</p>
+        <h2>What does comparing two lists do?</h2>
+        <p>List comparison separates two sets of values into useful groups. Common values appear in both lists. One-sided values appear in only List A or only List B. This is useful for names, IDs, URLs, keywords, spreadsheet columns, product codes and other line-based data.</p>
+        <p>The same task may be described as <em>compare 2 lists</em>, <em>comparing two lists</em>, <em>comparing 2 lists</em> or a <em>list diff</em>. This page focuses on the basic comparison itself rather than duplicating a larger suite of tools.</p>
       </article>
       <article>
-        <h2>What should a good comparison show?</h2>
-        <p>A practical comparison should clearly separate common items from one-sided differences. Depending on the task, you may also want case-insensitive matching, duplicate removal, whitespace cleanup, sorting or export options. These features are available in the full tool linked below.</p>
+        <h2>How this lite tool handles values</h2>
+        <p>By default, surrounding spaces and blank entries are ignored, and letter case is treated as equivalent. You can turn case-insensitive matching off when capitalization must be exact. Repeated values are consolidated for a clearer comparison result.</p>
+        <p>Because the comparison runs with JavaScript in the browser, the values you paste are not sent to a comparison server by this page.</p>
       </article>
     </section>
 
-    <section class="cta-panel container">
+    <section class="advanced container">
       <div>
-        <span class="eyebrow">Ready to compare?</span>
-        <h2>Use the full Compare Two Lists tool</h2>
-        <p>Paste your two lists, run the comparison and review the matches and differences directly on the main website.</p>
+        <span class="eyebrow">Need more than the lite comparison?</span>
+        <h2>Use the full comparison suite</h2>
+        <p>For additional list and data tools, more comparison workflows and related utilities, continue to the main ComparingTwoLists website.</p>
       </div>
-      <a class="primary-cta" href="https://comparingtwolists.com/">Open ComparingTwoLists.com <span aria-hidden="true">→</span></a>
+      <a class="primary-link" href="https://comparingtwolists.com/">Open ComparingTwoLists.com →</a>
     </section>
 
     <section class="faq container">
       <h2>Quick questions</h2>
-      <details>
-        <summary>Can I compare spreadsheet values?</summary>
-        <p>Yes. Copy the values from the relevant spreadsheet columns and paste them into the full comparison tool.</p>
-      </details>
-      <details>
-        <summary>Can I find values that exist in only one list?</summary>
-        <p>Yes. A list difference comparison can show items unique to List A and items unique to List B separately.</p>
-      </details>
+      <details><summary>Can I compare spreadsheet columns?</summary><p>Yes. Copy each spreadsheet column and paste it into List A or List B, with one value per line.</p></details>
+      <details><summary>Can I compare lists without matching capitalization?</summary><p>Yes. Leave “Ignore letter case” enabled so values such as Apple and apple are treated as the same item.</p></details>
+      <details><summary>Does the page save my list data?</summary><p>No comparison backend is used by this page. The comparison is performed locally in your browser.</p></details>
     </section>
   </main>
 
   <footer>
     <div class="container footer-inner">
-      <span>Compare Two Lists companion page</span>
-      <a href="https://comparingtwolists.com/">ComparingTwoLists.com</a>
+      <span>Compare Two Lists Lite</span>
+      <a href="https://comparingtwolists.com/">Full tool collection</a>
     </div>
   </footer>
+
+  <noscript><div class="noscript">JavaScript is required to run the comparison tool.</div></noscript>
+  <script src="app.js" defer></script>
 </body>
 </html>
